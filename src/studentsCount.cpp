@@ -20,9 +20,6 @@ int search(int *Arr, int len, int score) {
 	int rightIndex = len - 1;
 	int midIndex;
 
-	if (len == 0)
-		return midIndex = 0;
-
 	while (1) {
 		midIndex = (leftIndex + rightIndex) / 2;
 
