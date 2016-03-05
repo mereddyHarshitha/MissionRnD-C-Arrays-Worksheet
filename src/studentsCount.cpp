@@ -15,6 +15,67 @@ NOTES:
 
 #include <stdio.h>
 
+int search(int *Arr, int len, int score) {
+	int leftIndex = 0;
+	int rightIndex = len - 1;
+	int midIndex;
+
+	if (len == 0)
+		return midIndex = 0;
+
+	while (1) {
+		midIndex = (leftIndex + rightIndex) / 2;
+
+		if (leftIndex == midIndex) {
+			if (Arr[midIndex] > score)
+				return midIndex;
+		}
+		if (Arr[midIndex] < score) {
+			leftIndex = midIndex + 1;
+			if (leftIndex > rightIndex)
+				return midIndex += 1;
+		}
+		else
+			rightIndex = midIndex - 1;
+
+	}
+}
+
 void * studentsCount(int *Arr, int len, int score, int *lessCount, int *moreCount) {
-	return NULL;
+	
+	int index;
+
+	if (Arr == NULL)
+		return NULL;
+
+	if (len < 0)
+		return NULL;
+
+	else{
+		if (Arr[0] < Arr[len - 1]){
+			index = search(Arr, len, score);
+			*lessCount = index;
+
+			if (Arr[index] == score)
+				*moreCount = len - index - 1;
+			else
+				*moreCount = len - index;
+		}
+
+		else {
+			if (Arr[0] < score){
+				*lessCount = len;
+				*moreCount = 0;
+			}
+			else if (Arr[0] > score){
+				*moreCount = len;
+				*lessCount = 0;
+			}
+			else
+				*lessCount = *moreCount = 0;
+
+		}
+
+	}
+	
 }
